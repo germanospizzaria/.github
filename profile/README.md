@@ -5,12 +5,13 @@
 ### 1. Configuração Inicial
 
 ```bash
-# Clone o repositório (se ainda não fez)
-git clone <your-repo-url>
+# Repositório da aplicação
+git clone <url-do-repo-entregaai>
 cd entregaai
 
-# Copie e configure as variáveis de ambiente
-cp .env.example .env
+# Repositório de deploy (em outro diretório)
+git clone <url-do-repo-entregaai-deploy>
+cd entregaai-deploy
 ```
 
 ### 2. Edite o arquivo `.env`
@@ -83,10 +84,7 @@ docker-compose exec api npx prisma migrate deploy
 
 * **Database (PostgreSQL 17)**
   Alpine | \~80MB | Porta 5432
-
-* **Proxy (Nginx - opcional)**
-  Porta 80 | SSL-ready, rate limiting, load balancing
-
+  
 ---
 
 ## ⚡ Otimizações
@@ -161,6 +159,14 @@ curl http://localhost:8080/health   # Frontend
 docker-compose logs -f
 docker-compose logs -f api
 ```
+
+---
+
+🏗️ Estrutura dos Repositórios
+
+entregaai → código da aplicação (frontend e backend)
+
+entregaai-deploy → arquivos de infraestrutura para deploy com Docker
 
 ---
 
